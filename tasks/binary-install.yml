@@ -3,8 +3,8 @@
 - name: Include OS-specific variables.
   include_vars: "{{ ansible_os_family }}.yml"
 
-- name: Ensure unzip is installed. 
-  package: name=unzip state=present 
+- name: Ensure unzip is installed.
+  package: name=unzip state=present
 
 - name: Create user for Gogs.
   user:
@@ -30,7 +30,7 @@
     dest: "{{ gogs_user_home }}"
     group: "{{ gogs_user }}"
     owner: "{{ gogs_user }}"
-    copy: no
+    copy: false
   when: gogs_bin.stat.islnk is not defined
 
 - include: init-setup.yml
